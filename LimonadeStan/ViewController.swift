@@ -104,15 +104,59 @@ class ViewController: UIViewController {
     }
     
     @IBAction func mixLemonButtonPressed(sender: UIButton) {
+        
+        if supplies.lemons > 0 {
+            lemonsToPurchase = 0
+            supplies.lemons -= 1
+            lemonsToMix += 1
+            updateMainView()
+        }
+        else {
+            showAlertWithText(message: "You don't have enough inventory")
+        }
+        
     }
     
     @IBAction func mixIceCubeButtonPressed(sender: UIButton) {
+        
+        if supplies.iceCubes > 0 {
+            iceCubesToPurchase = 0
+            supplies.iceCubes -= 1
+            iceCubesToMix += 1
+            updateMainView()
+        }
+        else {
+            showAlertWithText(message: "You don't have enough inventory")
+        }
+        
     }
     
     @IBAction func unmixLemonButtonPressed(sender: UIButton) {
+        
+        if lemonsToMix > 0 {
+            lemonsToPurchase = 0
+            lemonsToMix -= 1
+            supplies.lemons += 1
+            updateMainView()
+        }
+        else {
+            showAlertWithText(message: "You have nothing to un-mix")
+        }
+        
     }
     
     @IBAction func unmixIceCubeButtonPressed(sender: UIButton) {
+        
+        if iceCubesToMix > 0 {
+            iceCubesToPurchase = 0
+            iceCubesToMix -= 1
+            supplies.iceCubes += 1
+            updateMainView()
+        }
+        else {
+            showAlertWithText(message: "You have nothing to un-mix")
+        }
+        
     }
     
     @IBAction func startDayButtonPressed(sender: UIButton) {
@@ -143,6 +187,14 @@ class ViewController: UIViewController {
                     print("else statement evaluating")
                 }
             }
+         
+            lemonsToPurchase = 0
+            iceCubesToPurchase = 0
+            lemonsToMix = 0
+            iceCubesToMix = 0
+            updateMainView()
+            
+            
         }
 
         
